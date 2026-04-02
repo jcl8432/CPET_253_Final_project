@@ -4,7 +4,7 @@ This code will be used to control the Garmin Lidar Lite V3 using a MSP432 micro-
 This code will currently work with MSP432 Launchpad kit that is used at RIT.
 
 # What will this project include
-This project will include the use of bluetooth module on the msp432 and lcd display, leds and the lidar sensor and interrupts.
+This project will include the use of bluetooth module on the msp432 and lcd display, leds and the lidar sensor and motors.
 
 # What is LIDAR
 LIDAR stands for "Light Detection and Ranging" which uses lasers pulses to create a map of the enviroment. It calculates the distance via the time it takes for the laser to hit the object then to bounce back and get recieved by the sensor. 
