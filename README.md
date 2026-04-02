@@ -25,8 +25,8 @@ Sensor:
 - https://www.garmin.com/en-US/p/557294/pn/010-01722-00/#additional
 
 Where to buy:
-- Resistor: https://a.co/d/01NSEAg6
-- Capacitor: https://www.digikey.com/en/products/detail/panasonic-electronic-components/EEU-FR1E681L/2433555
+- 1k Resistor: https://a.co/d/01NSEAg6
+- 680 microF Capacitor: https://www.digikey.com/en/products/detail/panasonic-electronic-components/EEU-FR1E681L/2433555
 - Dupont connectors: https://a.co/d/09Fhr68s
 - BreadBoard: https://mou.sr/4smcnqw
 - MSP432: The board used is no longer sold but chip still is
