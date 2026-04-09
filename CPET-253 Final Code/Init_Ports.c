@@ -23,10 +23,7 @@ The initializations will be different for each lab.
 // Input: none
 // Output: none
 void Port1_Init(void){
-//    P1DIR &= ~0b00010010;
 
-//    P1REN |= 0b00010010;
-//    P1OUT |= 0b00010010;
   // Use the port direction register to configure pins as inputs and output
   //    -A 1 sets a pin as an output. Use |= with a bit mask to set 1's.
   //    -A 0 sets a pin as an input. Use &= with a bit mask to set 0's.
@@ -51,7 +48,8 @@ void Port2_Init(void){
     P2REN |=  0b10110000;
     P1OUT |=  0b10110000;
 
-    //nSleep and PH
+    // These are for the motors below
+    // nSleep and PH
     P2DIR |=  0b11000000;
     P2SEL0 |= 0b11000000;
     P2SEL1 &= ~0b1100000;
@@ -172,8 +170,7 @@ void Port7_Init(void){
   // Use the port output register to configure the resistors as pull-ups or pull-downs
   // Use the PxSEL0 and PxSEL1 registers to enable alternate pin functions, if applicable
   // Use the port output register to put outputs to an initial state
-//	P7DIR &= ~0b00000000; // setting all bits to be outputs
-//	P7OUT |= 0b00000000;
+
 }
 
 // ------------Port8_Init------------
