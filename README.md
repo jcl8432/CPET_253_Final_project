@@ -6,6 +6,11 @@ This code will currently work with MSP432 Launchpad kit that is used at RIT.
 # What will this project include
 This project will include the use of bluetooth module on the msp432 and lcd display, leds and the lidar sensor and motors.
 
+# Folders
+Final code will hold the code used in the demonstration and is done
+The example code is going to have examples that were used to complete the files and referenced too from labs
+Datasheets will hold the datasheets used to program with or to be used to reference functions used for setting ports
+
 # What is LIDAR
 LIDAR stands for "Light Detection and Ranging" which uses lasers pulses to create a map of the enviroment. It calculates the distance via the time it takes for the laser to hit the object then to bounce back and get recieved by the sensor. 
 It is commonly used in aviation or terrestrial scanning. 
