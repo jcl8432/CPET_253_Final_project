@@ -33,5 +33,12 @@ Where to buy:
 - Arduino UNO: https://store-usa.arduino.cc/products/arduino-uno-rev3
 
 
+# Repositories for reference from Garmin
+These repositories contain examples for different uses of the LIDAR Lite V3
+- https://github.com/garmin/LIDARLite_Arduino_Library
+- https://github.com/garmin/LIDARLite_RaspberryPi_Library
+- https://github.com/garmin/LIDARLite_ANT_Library
+
+
 
 
