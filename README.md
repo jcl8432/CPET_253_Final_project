@@ -10,8 +10,7 @@ This project will include the use of bluetooth module on the msp432 and lcd disp
 Final code will hold the code used in the demonstration and is done
 The example code is going to have examples that were used to complete the files and referenced too from labs
 Datasheets will hold the datasheets used to program with or to be used to reference functions used for setting ports
-3d print files has the mounting bracket for the garmin lidar V3 will take 4 m3 nuts and button cap screws of a certain size and 2 screws to hold it onto the servo mounting point
-
+3d print files has the mounting bracket for the garmin lidar V3 will take 4 m3 nuts and button cap screws of a certain size and 2 screws to hold it onto the servo mounting point the 3mf is the presliced version of the file with the proper filament settings for pla and the step file is if you want to use your own type of filament. These files are under the https://creativecommons.org/licenses/by-nc-sa/4.0/ where it allows remix culture but cannot be used for commerical use.
 # What is LIDAR
 LIDAR stands for "Light Detection and Ranging" which uses lasers pulses to create a map of the enviroment. It calculates the distance via the time it takes for the laser to hit the object then to bounce back and get recieved by the sensor. 
 It is commonly used in aviation or terrestrial scanning. 
