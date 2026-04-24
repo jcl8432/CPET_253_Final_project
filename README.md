@@ -4,13 +4,14 @@ This code will be used to control the Garmin Lidar Lite V3 using a MSP432 micro-
 This code will currently work with MSP432 Launchpad kit that is used at RIT.
 
 # What will this project include
-This project will include the use of bluetooth module on the msp432 and lcd display, leds and the lidar sensor and motors.
+This project will include the use of bluetooth module on the msp432 and oled display, leds and the lidar sensor and motors.
 
 # Folders
 Final code will hold the code used in the demonstration and is done
 The example code is going to have examples that were used to complete the files and referenced too from labs
 Datasheets will hold the datasheets used to program with or to be used to reference functions used for setting ports
 3d print files has the mounting bracket for the garmin lidar V3 will take 4 m3 nuts and button cap screws of a certain size and 2 screws to hold it onto the servo mounting point the 3mf is the presliced version of the file with the proper filament settings for pla and the step file is if you want to use your own type of filament. These files are under the https://creativecommons.org/licenses/by-nc-sa/4.0/ where it allows remix culture but cannot be used for commerical use.
+
 # What is LIDAR
 LIDAR stands for "Light Detection and Ranging" which uses lasers pulses to create a map of the enviroment. It calculates the distance via the time it takes for the laser to hit the object then to bounce back and get recieved by the sensor. 
 It is commonly used in aviation or terrestrial scanning. 
@@ -24,6 +25,14 @@ It is commonly used in aviation or terrestrial scanning.
 - 680μF capacitor if I2C protocol
 - 3d printed mount for the sensor
 - LIDAR Lite V3 sensor from Garmin
+
+If you want to draw your own OLED display if you use a Adafruit 1306 0.96 display you will need to use ms paint to create a bmp file to upload to https://javl.github.io/image2cpp/ which will convert it into a splash function.
+The settings I used 
+- 128x64 pixels (I drew on a 128x64 pixel size mspaint image)
+- Code output format was the Adafruit GFXbitmapFont
+- Draw mode vertical 1 bit per pixel (THIS IS IMPORTANT) or else your image will look funky on the display
+
+
 
 # Where to purchase Materials
 Sensor:
