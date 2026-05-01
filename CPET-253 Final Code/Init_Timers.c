@@ -89,8 +89,6 @@ void TimerA2_Init(void){
   //    Enable the CCRn match interrupt if needed
   // For PWM, Load TA2CCR0 with clock
   //    counts for desired period
-    TA2CTL |= 0x02E0; //using hex set to smclock clock scalar of 8 and continuous mode
-
 }
 
 // ------------TimerA3_Init------------
@@ -114,12 +112,4 @@ void TimerA3_Init(void){
   //    Enable the CCRn match interrupt if needed
   // For PWM, Load TA3CCR0 with clock
   //    counts for desired period
-    //60000 clock divider of 4
-    TA3CTL |= 0x0290;
-    TA3CCTL3 |= OUTMOD_7;
-    TA3R = 0;
-    TA3CCR0 = 59999;
-
-
-
 }

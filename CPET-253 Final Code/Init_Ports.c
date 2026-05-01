@@ -23,10 +23,6 @@ The initializations will be different for each lab.
 // Input: none
 // Output: none
 void Port1_Init(void){
-//    P1DIR &= ~0b00010010;
-
-//    P1REN |= 0b00010010;
-//    P1OUT |= 0b00010010;
   // Use the port direction register to configure pins as inputs and output
   //    -A 1 sets a pin as an output. Use |= with a bit mask to set 1's.
   //    -A 0 sets a pin as an input. Use &= with a bit mask to set 0's.
@@ -45,6 +41,7 @@ void Port1_Init(void){
 // Input: none
 // Output: none
 void Port2_Init(void){
+	// LED initialization
     P2DIR |= (BIT0 | BIT1 | BIT2);
     P2OUT &=  ~(BIT0 | BIT1 | BIT2);
     P2DIR &= ~0b10110000;
@@ -102,13 +99,6 @@ void Port4_Init(void){
   // Use the port output register to configure the resistors as pull-ups or pull-downs
   // Use the PxSEL0 and PxSEL1 registers to enable alternate pin functions, if applicable
   // Use the port output register to put outputs to an initial state
-//    P4DIR &= 0b00010010;//enable inputs for bits 7,6,5,3,2,0
-//    P4REN |= 0b11101101;//enable pull up or pull down resistors
-//    P4OUT |= 0b11101101;//specify pull up resistors
-//    P4SEL0 &= ~0b11101101;
-//    P4SEL1 &= ~0b11101101;
-
-    P4DIR |= (BIT0); // IR pwm output for P7.0
 }
 
 // ------------Port5_Init------------
@@ -120,11 +110,6 @@ void Port4_Init(void){
 // Input: none
 // Output: none
 void Port5_Init(void){
-    P5DIR |= (BIT5 | BIT4); // motors
-    P5DIR |= (BIT3); // IR LEDS for P7.0
-
-
-
   // Use the port direction register to configure pins as inputs and output
   //    -A 1 sets a pin as an output. Use |= with a bit mask to set 1's.
   //    -A 0 sets a pin as an input. Use &= with a bit mask to set 0's.
@@ -132,6 +117,7 @@ void Port5_Init(void){
   // Use the port output register to configure the resistors as pull-ups or pull-downs
   // Use the PxSEL0 and PxSEL1 registers to enable alternate pin functions, if applicable
   // Use the port output register to put outputs to an initial state
+    P5DIR |= (BIT5 | BIT4); // motors pins
 }
 
 // ------------Port6_Init------------
@@ -150,17 +136,13 @@ void Port6_Init(void){
   // Use the port output register to configure the resistors as pull-ups or pull-downs
   // Use the PxSEL0 and PxSEL1 registers to enable alternate pin functions, if applicable
   // Use the port output register to put outputs to an initial state
-  P6DIR |= (BIT2);
-  P6DIR &= ~(BIT3);
-  P6OUT &= ~BIT2;
-  P6SEL0 &= ~(BIT2 | BIT3);
-  P6SEL1 &= ~(BIT2 | BIT3);
-  P6->SEL0 |= BIT4 | BIT5;
-  P6->SEL1 &= ~(BIT4 | BIT5);
+  // This is for the I2C
+  P6SEL0 |= BIT4 | BIT5;
+  P6SEL1 &= ~(BIT4 | BIT5);
 
   // Enable pull-up resistors
-  P6->REN  |= BIT4 | BIT5;   // enable resistors
-  P6->OUT  |= BIT4 | BIT5;   // select pull-up (not pull-down)
+  P6REN |= BIT4 | BIT5;   // enable resistors
+  P6OUT |= BIT4 | BIT5;   // select pull-up (not pull-down)
 }
 
 // ------------Port7_Init------------
@@ -179,8 +161,6 @@ void Port7_Init(void){
   // Use the port output register to configure the resistors as pull-ups or pull-downs
   // Use the PxSEL0 and PxSEL1 registers to enable alternate pin functions, if applicable
   // Use the port output register to put outputs to an initial state
-//	P7DIR &= ~0b00000000; // setting all bits to be outputs
-//	P7OUT |= 0b00000000;
 }
 
 // ------------Port8_Init------------
@@ -217,10 +197,6 @@ void Port9_Init(void){
   // Use the port output register to configure the resistors as pull-ups or pull-downs
   // Use the PxSEL0 and PxSEL1 registers to enable alternate pin functions, if applicable
   // Use the port output register to put outputs to an initial state
-	P9DIR |= BIT2;
-	P9SEL0 |= BIT2;
-	P9SEL1 &= ~BIT2;
-
 }
 
 // ------------Port10_Init------------
