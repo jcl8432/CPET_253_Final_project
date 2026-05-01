@@ -34,8 +34,6 @@ The settings I used
 - Code output format was the Adafruit GFXbitmapFont
 - Draw mode vertical 1 bit per pixel (THIS IS IMPORTANT) or else your image will look funky on the display
 
-
-
 # Where to purchase Materials
 Sensor:
 - https://www.garmin.com/en-US/p/557294/pn/010-01722-00/#additional
@@ -48,34 +46,6 @@ Where to buy:
 - MSP432: The board used is no longer sold but chip still is
 - Arduino UNO: https://store-usa.arduino.cc/products/arduino-uno-rev3
 
-# Problems I ran into during this project
-I2C Protocol:
-- learning I2C was difficult there was a lot of trial and error the biggest problem was getting the sensor to take the measurement and have enough time to output the right number or a number at all. I found that even though there is a theoretical value of 2ms that isnt really possible for something like this sensor I found that 30ms was a better because it was in the reccomended sweet spot of 20ms-40ms.
-- Another problem I encountered was the biasing or non biasing that the sensor allowed you to do. I chose the non biased reading option due to the fact I built in a averaging function which did the same thing as biasing but was quicker.
-- Some of the time when I was using the I2C protocol I would forget to put a delay inbetween data aqquistion and when the data is recieved by the mdp432. this let do straight up wrong readings and it was not correct at all and was causing problems. Also related was having to many sends or recieves in a row it would give weird readings or crash.
-- Another was not reading before getting into the main loop so it would be double reading and was giving incorrect data.
-- smaller things was learning how to properly set up the I2C buffers.
-
-OLED Display:
-- One problem was trying to output measured values to the screen. I learned that you cannot like in arduino set the cursor in a spot for where you want it to start writing and that would output the string you want. I had to create the helper function value out to make it display properly
-- Another was when I was setting up the start up splash I was using the wrong part of the converter I was not setting the pixels and bits properly so it was shown wierdly.
-
-State machine:
-- Trying to use other state machines as an example didn't work out too well so I spend a good portion of time debugging the state machine.
-- Some of the states were using a state timer but it was going to fast and it needed multiple states to go to if one didn't pass.
-- Some of the states are a bit rough and I tried to make it as simple as possible but the main problem I ran into is that the servo would not be able to handle the weight of the lidar sensor and swing it without it falling off. 
-
-Lidar:
-- The sensor was a bit of a learning curve. I first got it running on the PWM mode I tried using the modes from the ultrasonic lab but that didnt work and it need to change a lot. I didn't include that code in the file because it was super buggy and I struggled with it a lot.
-- The I2C portion of the sensor was already explained above but to bounce off that I struggled to get it run at points sometimes messing with one thing would change how the whole thing functioned all together.
-
-3D modeling:
-- I struggled with the modeling aspect of this I went through 8 iterations to get to the final 3d print I got to. I struggled a lot with the print tolerances and getting the right sized holes and placement of the holes to make it so that the screws fit onto the sensor and held it up. I found later on that someone already did the cad of the actual sensor so I used that to do all the parameters ot make it so everything fit well.
-
-# Big takeaways 
-This project was overall a lot of fun and a big learning experience and I learned a lot about LIDAR and I2C protocol. I also learned a lot about how to work on a project to make it work. I found a lot of times to be going back to resources to read up on them and learning how to make it work. I think I also was outside my comfort zone on this project almost all the time.
-
-
 # Repositories for reference from Garmin
 These repositories contain examples for different uses of the LIDAR Lite V3
 - https://github.com/garmin/LIDARLite_Arduino_Library
@@ -83,5 +53,115 @@ These repositories contain examples for different uses of the LIDAR Lite V3
 - https://github.com/garmin/LIDARLite_ANT_Library
 
 
+# Project Reflections
 
+## Overview
+This project involved developing an embedded systems-based LiDAR scanning platform using I2C communication, an MSP432 microcontroller, an OLED display, and servo-driven mechanical integration. The system was intended to explore basic room mapping concepts and real-time sensor integration.
 
+---
+
+## Technical Challenges
+
+### I2C Communication
+Implementing I2C communication was one of the most complex aspects of the project. Significant debugging was required to ensure reliable sensor readings.
+
+Key issues included:
+- Timing inconsistencies between sensor measurement and data retrieval
+- Initial assumptions about theoretical timing (~2 ms) proved unreliable; a 20–40 ms window was required, with 30 ms providing stable results
+- Incorrect or missing delays between acquisition and read cycles resulted in invalid sensor data
+- Excessive or rapid sequential I2C transactions caused unstable readings or system crashes
+- Improper initialization sequence led to double-reading issues in the main loop
+- Buffer configuration required iterative debugging to achieve stable communication
+
+A software-based averaging approach was implemented, allowing the use of non-biased sensor readings while maintaining stability.
+
+---
+
+### OLED Display Integration
+OLED output required custom formatting logic due to limitations in cursor-based rendering compared to Arduino-style libraries.
+
+Key challenges included:
+- Developing a custom output formatting function to properly align numerical data
+- Resolving incorrect pixel mapping during the startup splash screen due to improper bit-level configuration
+- Ensuring consistent spacing and alignment of dynamic runtime values
+
+---
+
+### State Machine Design
+The state machine required multiple redesign iterations due to timing and hardware constraints.
+
+Key issues included:
+- Over-reliance on external state machine examples that did not fully align with system requirements
+- Timer-based state transitions executing too quickly under certain conditions
+- Need to restructure logic to support multi-step validation across states
+- Mechanical limitation: servo torque was insufficient to reliably support and rotate the LiDAR assembly, impacting system stability
+
+---
+
+### LiDAR Sensor Integration
+LiDAR integration required significant adaptation from initial assumptions.
+
+Key challenges included:
+- PWM mode implementation required major modifications from prior ultrasonic sensor experience
+- I2C mode behavior was highly sensitive to configuration changes, requiring iterative debugging
+- Sensor response inconsistencies were often linked to timing and communication sequence issues
+
+---
+
+### Mechanical Design (3D Modeling)
+Mechanical integration required multiple design iterations.
+
+Key challenges included:
+- Approximately 8 prototype iterations were required to achieve functional fit
+- Tolerance miscalculations impacted screw alignment and sensor mounting stability
+- Final design was improved significantly by referencing an existing CAD model of the sensor, which improved accuracy and fit
+
+---
+
+## System Testing and Validation
+Testing was performed iteratively across hardware and software components.
+
+### Validation Methods:
+- Oscilloscope verification of PWM signal integrity for LiDAR output
+- Cross-validation of OLED display behavior using a known working reference display
+- LED-based state indicators used to verify system state transitions
+- Real-time monitoring of RPM and distance values via OLED output
+
+### System-Level Testing:
+- Full system integration testing using combined sensor, display, and control logic
+- Iterative tuning to reduce noise and improve data stability in I2C acquisition
+
+---
+
+## Original System Concept
+The initial design objective was to build a room-mapping robot capable of generating a point cloud representation of its environment and performing autonomous navigation to avoid obstacles.
+
+This would have required:
+- A continuously rotating sensor platform
+- Additional actuation hardware for controlled scanning
+- More advanced path planning and mapping algorithms
+
+Due to system complexity and time constraints, the project was scaled down to focus on sensor integration and real-time data acquisition.
+
+---
+
+## Future Improvements
+If further development were pursued, key improvements would include:
+- Refactoring and modularizing embedded code for scalability and maintainability
+- Improving LiDAR calibration and measurement accuracy through deeper sensor-level investigation
+- Redesigning the mechanical mount for improved stability and reduced vibration sensitivity
+- Implementing a controlled rotation mechanism for consistent scanning
+- Expanding system logic toward full environmental mapping and navigation
+
+---
+
+## Key Takeaways
+This project provided practical experience in embedded systems development, particularly in:
+- I2C communication debugging and timing sensitivity
+- Real-time sensor integration and data filtering
+- Hardware-software co-design constraints
+- Iterative system debugging under physical and electrical limitations
+
+The project reinforced the importance of systematic debugging, hardware validation tools (oscilloscope, visual indicators), and incremental system integration.
+
+---
