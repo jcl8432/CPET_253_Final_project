@@ -70,15 +70,15 @@ Key issues included:
 - Initial assumptions about theoretical timing (~2 ms) proved unreliable; a 20–40 ms window was required, with 30 ms providing stable results
 - Incorrect or missing delays between acquisition and read cycles resulted in invalid sensor data
 - Excessive or rapid sequential I2C transactions caused unstable readings or system crashes
-- Improper initialization sequence led to double-reading issues in the main loop
+- Improper initialization sequence led to double reading issues in the main loop
 - Buffer configuration required iterative debugging to achieve stable communication
 
-A software-based averaging approach was implemented, allowing the use of non-biased sensor readings while maintaining stability.
+A software-based averaging approach was implemented, allowing the use of non biased sensor readings while maintaining stability.
 
 ---
 
 ### OLED Display Integration
-OLED output required custom formatting logic due to limitations in cursor-based rendering compared to Arduino-style libraries.
+OLED output required custom formatting logic due to limitations in cursor based rendering compared to Arduino-style libraries.
 
 Key challenges included:
 - Developing a custom output formatting function to properly align numerical data
@@ -93,7 +93,7 @@ The state machine required multiple redesign iterations due to timing and hardwa
 Key issues included:
 - Over-reliance on external state machine examples that did not fully align with system requirements
 - Timer-based state transitions executing too quickly under certain conditions
-- Need to restructure logic to support multi-step validation across states
+- Need to restructure logic to support multi step validation across states
 - Mechanical limitation: servo torque was insufficient to reliably support and rotate the LiDAR assembly, impacting system stability
 
 ---
