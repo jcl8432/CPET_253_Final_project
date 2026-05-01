@@ -4,7 +4,7 @@ This code will be used to control the Garmin Lidar Lite V3 using a MSP432 micro-
 This code will currently work with MSP432 Launchpad kit that is used at RIT.
 
 # What will this project include
-This project will include the use of bluetooth module on the msp432 and oled display, leds and the lidar sensor and motors. This project will also require 3d printing those parts will be realitively cheap.
+This project will include the use of and oled display, leds and the lidar sensor and motors and timers and I2C. This project will also require 3d printing those parts will be realitively cheap.
 
 # Folders
 Final code will hold the code used in the demonstration and is done
@@ -22,9 +22,11 @@ It is commonly used in aviation or terrestrial scanning.
 - Any other sensors required
 - Dupont connectors wires
 - 1kΩ resistor if PWM mode
-- 680μF capacitor if I2C protocol
+- 680μF capacitor if I2C protocol 
 - 3d printed mount for the sensor
 - LIDAR Lite V3 sensor from Garmin
+If you cannot find a 680µF capacitor you can multiple other capacitors in parallel to make a single capacitor.
+I used 1 470µF capacitor, 2 100µF capacitors, and 1 10µF capacitor.
 
 If you want to draw your own OLED display if you use a Adafruit 1306 0.96 display you will need to use ms paint to create a bmp file to upload to https://javl.github.io/image2cpp/ which will convert it into a splash function.
 The settings I used 
