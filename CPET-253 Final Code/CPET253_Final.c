@@ -6,8 +6,8 @@
  * Description:
  * This program is a combination of the Reflectance lab
  * for the motors and the ultrasonic lab for the state
- * machine. This is running a LIDAR sensor, 2 dc motors,
- * an OLED display showing the current information about the robot.
+ * machine. This is running a LIDAR sensor,
+ * an OLED display showing the current information about the motors distance and state.
  * It will figure out a way to make through a maze by looking for a
  * reflected value from the LIDAR and then trying to go left and if not
  * able to go left will try going right or else going backwards.
